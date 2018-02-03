@@ -1,2 +1,2 @@
 # Tormenta
-Programa para la hackaton de PEUM
+Single page aplication para la hackaton de PEUM

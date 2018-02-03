@@ -1,0 +1,17 @@
+body {
+}
+footer {
+  margin:50px;
+}
+.custom-width {
+  max-width: 900px;
+}
+.contador {
+  font-size: 10px;
+  color: red;
+  float: right;
+  margin-top: 10px;
+}
+.peum-logo {
+  max-width: 100px;
+}

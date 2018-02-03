@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+  <title>Busca-Podcasts!!!</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/custom.css">
+  <meta name="description" content="pruebas">
+  <meta name="author" content="Tormenta Caribeña">
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div class="container">
+    <nav class="navbar is-white">
+      <div class="navbar-brand">
+        <a class="navbar-item brand-text" href="../">Busca-Podcasts!!!</a>
+        <div id="navMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#">Boton de menu que no necesitamos :P</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="container custom-width">
+        <h1 class="title">
+          Hola bienvenido a Busca-Podcasts!!!
+        </h1>
+        <p class="subtitle">
+          Esto es una herramienta creada para el <a href="http://www.programaresunamierda.com/p/hackpeum.html" target="_blank">HackPEUM</a>, con la que puedes buscar y compartir tus podcats favoritos en las redes sociales...
+          que se puede hacer desde otros lados pero no se nos ocurria nada mejor :(
+        </p>
+        <p class="subtitle">
+          <a href="http://www.programaresunamierda.com/p/hackpeum.html" target="_blank">
+              <img src="./assets/LogoPEUM.png" alt="Placeholder image" class="peum-logo">
+          </a> 
+          <div>o_O poner esto era un requisito, lo pueden creer??? o_O</div>
+        </p>
+      </div>
+    </section>
+
+    <div  id="app">
+
+      <section class="section">
+        <div class="container custom-width">
+          <h1 class="title">
+              Encuentra los mejores podcasts!!! O no... :P
+              <span class="contador" v-if="resultado.length>0">Encontrados: {{resultado.length}}</span>
+              <span class="contador" v-else>No encontrados</span>
+          </h1>
+          <form action="#" id="search">
+            <div class="field">
+              <label class="label">Nombre del Podcast</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Nombre del Podcast"  v-model="searchText">
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container custom-width">
+          <h1 class="title">Resultados ¯\_(ツ)_/¯</h1>
+          <ul>
+            <li  v-for="(result, index) in resultado" :key="index">
+              <div class="card">
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-100x100">
+                        <img :src="result.artworkUrl100" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title"><a :href="result.collectionViewUrl" target="_blank">{{ result.collectionName }}</a></p>
+                      <p class="subtitle">Autor: {{ result.artistName }}</p>
+                    </div>
+                  </div>
+                  <div class="content">
+                    Pais: {{ result.country }}
+                    <br>
+                    Genero: {{ result.primaryGenreName }}
+                    <br>
+                    Contenido: {{ result.contentAdvisoryRating }}
+                    <br>
+                    <time datetime="2016-1-1">{{ result.releaseDate }}</time>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <p class="card-footer-item">
+                    <span>
+                      <a :href="'https://twitter.com/share?url=' + result.collectionViewUrl + '&text='+result.collectionName" target="_blank">Twitter <i class="fab fa-twitter"></i></a>
+                    </span>
+                  </p>
+                  <p class="card-footer-item">
+                    <span data-js="facebook-share">
+                      <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + result.collectionViewUrl + '&quote='+result.collectionName" target="_blank">Facebook <i class="fab fa-facebook-f"></i></a>
+                    </span>
+                  </p>
+                  <p class="card-footer-item">
+                    <span>
+                      <a :href="'https://www.linkedin.com/shareArticle?mini=true&url=' + result.collectionViewUrl + '&title='+result.collectionName + '&summary=&source='" target="_blank">LinkedIn <i class="fab fa-linkedin-in"></i></a>
+                    </span>
+                  </p>
+                  <p class="card-footer-item">
+                    <span>
+                      <a :href="'https://plus.google.com/share?url=' + result.collectionViewUrl" target="_blank">Google Plus <i class="fab fa-google-plus-g"></i></a>
+                    </span>
+                  </p>
+                </footer>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container custom-width">
+          <h1 class="title">
+            Equipo: Tormenta Caribeña
+          </h1>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="./assets/403184_3010649434738_693828814_n.jpg" alt="Placeholder image" class="peum-logo">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Gonzalo Nandez</strong> <a href="https://twitter.com/Infogon?lang=en" target="_blank">@Infogon</a>
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="./assets/yo.png" alt="Placeholder image" class="peum-logo">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Laura Santana</strong> <a href="https://twitter.com/LauryStana?lang=en" target="_blank">@LauryStana</a>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+<footer>
+  <p>&copy; 2018 HackPEUM. Todos los derechos (y los izquierdos) reservados.</p>
+</footer>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <script>
+    const miApp = new Vue({
+      el: '#app',
+      data: {
+        searchText: '',
+        resultado: []
+      },
+      watch: {
+        searchText: function (val) {
+          this.buscar(val)
+        }
+      },
+      methods: {
+        buscar(name, country = 'es') {
+          let me = this
+          axios.get('http://itunes.apple.com/search?term=' + name + '&country=' + country + '&entity=podcast')
+            .then(function (response) {
+              console.log(response.data);
+              me.resultado = response.data.results
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
